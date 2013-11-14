@@ -8,7 +8,12 @@ Some of the code has been re-used in other projects and were modified from templ
 
 An example would be the DirectX programs, where the DirectXFramework.h/.cpp files and 
 OpenGL header and source files. These were basic templates, but over time I modified them
-to suitt he needs of the programs I was creating. The templates merely offered me a "window"
-to show and display, and a basic Windows Message loop to utilize. All other aspects were written out
-as course work for the class, where we later built upon each aspect, and over time created a game
-or demo project specializing in specific features. 
+to suit the needs of the programs I was creating, along with some playful experimintation. 
+The templates merely offered me a "window" to show and display, and a basic Windows Message loop to utilize. 
+All other aspects were written out as course work for the class, where we later built upon each aspect, 
+and over time created a game or demo project specializing in specific features. 
+
+Note: The use of .txt files for the Pong game were uploaded as the original .cpp and .h files were lost. 
+I had them uploaded on my Dropbox account long ago, so I decided to pull them out and use them as 
+.txt file here. There are no textures with these files unfortunately, but it was just a 2D pong game, 
+and my first experiment with DirectX. 
