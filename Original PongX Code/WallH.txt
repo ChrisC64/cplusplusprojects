@@ -1,0 +1,46 @@
+////////////////////////////////////
+// Class: BASE CLASS for WALL objects
+// Abstract Class
+// Purpose: This class is abstract,
+// so that we may create other wall
+// properties with our game. The behaviors
+// of a wall are similar to the boundaries
+// and the paddle (with exception of 
+// movement). 
+//////////////////////////////////////
+#ifndef WALL_H
+#define WALL_H
+#include <iostream>
+//#include "Gameplay.h"
+using namespace std;
+
+class Wall
+{
+protected:
+	float mw_fPosX, mw_fPosY;
+	float mw_fCenterX, mw_fCenterY;
+	bool mw_bHit;
+	//D3DXMATRIX wallTransMat;
+public: 
+	/////////////////
+	//Constructors//
+	////////////////
+	Wall();
+	~Wall();
+	//set members
+	void setPosX(float);
+	void setPosY(float);
+	void setHit();        //toggle between true and false every time we call 
+	void setCenterX(float);
+	void setCenterY(float);
+	//Access members of class
+	float getPosX();
+	float getPosY();
+	bool getHit();		//return the boolean value
+	float getCenterX();
+	float getCenterY();
+
+	// VIRTUAL VOID FUNCTION - BASE CLASS
+	//virtual void Update(float dt)=0
+};
+#endif WALL_H

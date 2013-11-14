@@ -1,0 +1,147 @@
+/////////////////////////////////////////////////////
+// Ball Class
+// This will be our ball object. It will be drawn
+// and collide with objects. This ball will be
+// able to interact with our other objects. 
+////////////////////////////////////////////////////
+#ifndef BALL_H
+#define BALL_H
+#include <iostream>
+//#include "Gameplay.h"
+using namespace std;
+
+//class 
+class Ball
+{
+protected:
+	float MAX_BALL_SPEED;		// Maximum Speed
+	float MIN_BALL_SPEED;		// Minimum Speed
+	float mb_fCurrBallSpd;			// Ball's current speed
+	float mb_fPosX, mb_fPosY;		// X/Y position
+	float mb_fCenterX, mb_fCenterY;	// X/Y center
+	float mb_fHitBox[4];			// Size of hitbox
+	float mb_fTop, mb_fBot,
+		mb_fRight, mb_fLeft;		//location of outer edges of sprite
+	float mb_fHeight, mb_fWidth;	//height and width of ball
+	float mb_fXVel;					// X Velocity of ball
+	float mb_fYVel;					// Y Velocity of ball
+	bool mb_bHit;					// Check Collision
+	//D3DXMATRIX	ballTransMat;		// Ball's translation matrix
+public:
+	//////////////////
+	//	Constructor	//
+	//////////////////
+	Ball();
+	~Ball(); //descrutor
+	////////////
+	// Update //
+	////////////
+	//void update(float posX, float posY);
+	////////////////////////////////////
+	// Name: invertDirection
+	// Parameters: void
+	// Return: float
+	// Description: This will invert the direction
+	// of the object, when it collides with an object.
+	////////////////////////////////////
+	void invertDirectionX();
+	void invertDirectionY();
+	//////////////////////////////////////////
+	// Name: incSpeed
+	// Parameters: float
+	// Return: void
+	// Description: increment the speed of the ball
+	/////////////////////////////////////////
+	void incSpeed(float);
+	////////////////////////////////////////
+	// Name: set X and Y position
+	// Parameters: float
+	// Returns: void
+	// Description: Sets the X and Y values of the class
+	///////////////////////////////////////
+	void setPosX(float);
+	void setPosY(float);
+	////////////////////////////////////////
+	// Name: get X and Y position
+	// Parameters: void
+	// Returns: float
+	// Description: Returns value of members in class
+	////////////////////////////////////////
+	float getPosX();
+	float getPosY();
+	/////////////////////////////////////////
+	// Name: get/set Hitbox member
+	// Parameters: float/get
+	// Returns: void/float
+	// Description: getHitBox() returns member
+	// setHitBox() will set value
+	/////////////////////////////////////////
+	void setHitBox(float);
+	//float getHitBox();
+	////////////////////////////////////////
+	// Name: set velocity of X and Y
+	// Param: float
+	// Return: void
+	// Description: set the private variables
+	// for x and y velocity
+	/////////////////////////////////////////
+	void setXVel(float);
+	void setYVel(float);
+
+	//////////////////////////////////////////
+	// Name: getY/XVel
+	// Param: void
+	// Return: float
+	// Description: Returns values of private
+	// members for x and y velocity
+	//////////////////////////////////////////
+	float getXVel();
+	float getYvel();
+	////////////////////////////////////////////////////
+	//SetPos(float, float) to set both x and y position)
+	////////////////////////////////////////////////////
+	void setPos(float, float);
+	////////////////////////////////////////////////
+	//set values of private members mb_fCenterX/Y//
+	///////////////////////////////////////////////
+	void setCenterX(float);
+	void setCenterY(float);
+
+	///////////////////////////////////////////
+	//access private variables of mb_fCenter
+	/////////////////////////////////////////
+	float getCenterX();
+	float getCenterY();
+	//Set the boolean value
+	void setHitBool();
+	bool getHitBool();
+	/////////////////////////////////////////
+	// move ball across screen
+	////////////////////////////////////////
+	void updateBallPos(float, float);
+	////////////////////////////////////
+	//Set Up HitBox Array
+	///////////////////////////////////
+	void updateHitBox();
+	/////////////////////////////////
+	//Set up top/bot/right/left
+	////////////////////////////////
+	void updateBound(float xpos, float ypos);
+	float getTopBall();
+	float getBotBall();
+	float getRightBall();
+	float getLeftBall();
+	//////////////////////////////
+	//Set up and Get Height/Width
+	/////////////////////////////
+	void setWidth();
+	void setHeight();
+	float getWidth();
+	float getHeight();
+	///////////////////
+	//Ball Speed
+	///////////////////
+	void setBallSpeed(float);
+
+};
+#endif BALL_H

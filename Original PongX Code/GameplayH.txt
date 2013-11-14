@@ -1,0 +1,99 @@
+/***********************************************
+* Name: Christopher Carlos
+* Date: Nov 2012
+* Project: Pong
+* Information: This will be the rules and gameplay
+* functions for our Pong game. Score of players,
+* end game results, restarting the game, etc
+*************************************************/
+#ifndef GAMEPLAY_H
+#define GAMEPLAY_H
+#include <iostream>
+#include <cmath>
+#include <math.h>
+#include "Menu.h"
+#include "Paddle.h"
+#include "Ball.h"
+#include "Wall.h"
+using namespace std;
+
+class GamePlay: protected Menu, protected Paddle, protected Wall, protected Ball
+{
+private:
+	unsigned int Score;		// Player Score
+	unsigned int ScoreToWin;// Score to Win Game
+	int mg_iWidth;			// Width of playing field
+	int mg_iHeight;			// Height of playing field
+	bool mg_bEndGame;		// boolean to check if game is over
+	int wins;				// keep count of wins
+	int loss;				// keep count of losses
+	float mg_fXDistance,
+		mg_fYDistance;		// Distance between two points
+public:
+	//////////////////
+	// Constructors//
+	/////////////////
+	GamePlay();
+	~GamePlay();
+	/************************************
+	* Name: getDistance()
+	* Param: void
+	* Return: float
+	* Description: Return the distance
+	*************************************/
+	float getXDistance();
+	float getYDistance();
+	void calcDistance(float x1, float x2, float y1, float y2); // square( ( x2 - x1)^2 + (y2 - y1)^2 ) ) 
+	float square(float a); //returns a * a
+	//////////////////////////////////////
+	// Name: update()
+	// Param: float dt (delta time)
+	// Return: void
+	// Description: Updates the gameplay objects and scene
+	//////////////////////////////////////
+	void update(float dt);
+	//////////////////////////////////////
+	// Name: UpdateScore
+	// Parameters: int
+	// Return: void
+	// Description: Updates the score
+	/////////////////////////////////////
+	void updateScore(int);
+	void updateScoreToWin(int);
+	int getScoreToWin();
+	int getScore();
+	/////////////////////////////////////
+	// Name: getEndgame()
+	// Parameters: void
+	// Return: Bool
+	// Description: Returns bool value
+	// for mg_bEndGame
+	/////////////////////////////////////
+	bool getEndGame();
+	void setEndGame();
+	///////////////////////////////////////
+	// Name: Restart
+	// Parameters: void
+	// Return: Void
+	// Description: This function will restart the 
+	// game, by defaulting all values back to their normal
+	// values.
+	////////////////////////////////////////
+	void restartGame();
+	void goToMenu();
+
+	/////////////////////////////////////////
+	// Name: LoadGame()
+	// Param: void
+	// Return: void
+	// Description: Call this function to
+	// set the GamePlay object's members.
+	////////////////////////////////////////
+	void loadGame();
+	//void RenderGame();
+	Paddle* PaddleA, PaddleB;
+	Ball*	BallObj;
+};
+
+
+#endif GAMEPLAY_H

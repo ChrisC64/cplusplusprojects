@@ -1,0 +1,108 @@
+//Gameplay Class Functions
+#include "Gameplay.h"
+
+GamePlay::GamePlay()
+{
+	//Score		= 0;
+	ScoreToWin  = 3;
+	mg_iHeight	= 0;
+	mg_iWidth	= 0;
+	mg_bEndGame = false;
+	wins		= 0;
+	loss		= 0;
+	mg_fXDistance= 0;
+	mg_fYDistance= 0;
+	
+}
+GamePlay::~GamePlay()
+{
+	//Score		= NULL;
+	ScoreToWin  = NULL;
+	mg_iHeight	= NULL;
+	mg_iWidth	= NULL;
+	mg_bEndGame = NULL;
+	wins		= NULL;
+	loss		= NULL;
+	mg_fXDistance= NULL;
+	mg_fYDistance= NULL;
+}
+//Update The Score when player scores
+void GamePlay::updateScore(int goal)
+{
+	Score += goal;
+}
+//If User selects to increase score, update here
+void GamePlay::updateScoreToWin(int updateScore)
+{
+	ScoreToWin = updateScore;
+}
+//return score for game win when called
+int GamePlay::getScoreToWin()
+{
+	return ScoreToWin;
+}
+//return player score
+int GamePlay::getScore()
+{
+	return Score;
+}
+//set boolean value (toggle true/false)
+void GamePlay::setEndGame()
+{
+	if(mg_bEndGame == true)
+	{
+		//set to false
+		mg_bEndGame = false;
+	}
+	else
+	{
+		mg_bEndGame = true;
+	}
+}
+//return value of boolean mg_bEndGame
+bool GamePlay::getEndGame()
+{
+	return mg_bEndGame;
+}
+//restart the game when selected
+void GamePlay::restartGame()
+{
+	//loadGame();
+}
+void GamePlay::goToMenu()
+{
+	//loadMenu();
+}
+///////////////////////////////////////////
+// CALCULATE DISTANCE BETWEEN TO OBJECTS //
+///////////////////////////////////////////
+void GamePlay::calcDistance(float x1, float x2, float y1, float y2)
+{
+	mg_fXDistance = x2 - x1;
+	mg_fYDistance = y2 - y1;
+	mg_fXDistance = abs (mg_fXDistance);
+	mg_fYDistance = abs (mg_fYDistance);
+}
+float GamePlay::square(float a)
+{
+	return a * a;
+}
+float GamePlay::getXDistance()
+{
+	return mg_fXDistance;
+}
+float GamePlay::getYDistance()
+{
+	return mg_fYDistance;
+}
+//////////////////////
+// LOAD FUNCTIONS  //
+/////////////////////
+void GamePlay::loadGame()
+{
+	/*RECT rect;
+	GetWindowRect(m_hWnd, &rect);
+	int width = rect.right - rect.left;
+	int height = rect.bottom - rect.top;*/
+	
+}

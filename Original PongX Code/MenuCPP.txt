@@ -1,0 +1,44 @@
+////////////////////////////////////////
+// Class: Menu
+// Specifications: This class is the sub class
+// below the DirectXFrame class. It's purpose is to
+// switch the FSM of our Game State. It will be the
+// class that transitions our state, allowing us to
+// play the game, quit the game, enter the credits
+// and other situations.
+//////////////////////////////////////////
+#include "Menu.h"
+
+
+Menu::Menu()
+{
+	mm_iChoice = 2;
+}
+Menu::~Menu()
+{
+	Quit();
+}
+
+//load game
+/*void Menu::LoadGame()
+{
+	//begin the call to draw the game scene
+}*/
+//quit menu
+void Menu::Quit()
+{
+	//destroy objects in class
+}
+//show credits
+void Menu::Credits()
+{
+	//display credits
+}
+void Menu::setChoice(int choice)
+{
+	mm_iChoice = choice;
+}
+int Menu::getUserChoice()
+{
+	return mm_iChoice;
+}

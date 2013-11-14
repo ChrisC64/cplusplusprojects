@@ -1,0 +1,154 @@
+//Paddle Class functions
+#include "Paddle.h"
+
+Paddle::Paddle() 
+{
+	mp_fPosX		= 0.0f;
+	mp_fPosY		= 0.0f;
+	mp_fCenterX		= 0.0f;
+	mp_fCenterY		= 0.0f;
+	mp_bHit			= false;
+	mp_fHitBox[0]	= 0.0f;
+	mp_fHitBox[1]	= 0.0f;
+	MIN_Y			= 0.0f;
+	MAX_Y			= 0.0f;
+	mp_iScore		= 0;
+}
+Paddle::~Paddle()
+{
+	mp_fPosX		= NULL;
+	mp_fPosY		= NULL;
+	mp_fCenterX		= NULL;
+	mp_fCenterY		= NULL;
+	mp_bHit			= NULL;
+	//delete []mp_fHitBox;
+	MIN_Y			= NULL;
+	MAX_Y			= NULL;
+	mp_iScore		= NULL;
+}
+//update position of Y value (Paddle in current version only moves up Y axis)
+void Paddle::updatePosY(float Y)
+{
+	mp_fPosY += Y;//when incrementing the value, for movement
+}
+///////////////////////////////////////////
+//set position values for x and y of object
+///////////////////////////////////////////
+void Paddle::setPosX(float X)
+{
+	mp_fPosX = X;
+}
+void Paddle::setPosY(float Y)
+{
+	mp_fPosY = Y;
+}
+void Paddle::setCenterX(float cX)
+{
+	mp_fCenterX = cX / 2.0f;
+}
+void Paddle::setCenterY(float cY)
+{
+	mp_fCenterY = cY / 2.0f;
+}
+void Paddle::setMinY(float minY)
+{
+	MIN_Y = minY;
+}
+void Paddle::setMaxY(float maxY)
+{
+	MAX_Y = maxY;
+}
+void Paddle::setCheckHit()
+{
+	if(mp_bHit == true)
+	{
+		mp_bHit = false;
+	}
+	else
+	{
+		mp_bHit = true;
+	}
+}
+void Paddle::addScore(int score)
+{
+	mp_iScore += score;
+}
+void Paddle::setScore(int score)
+{
+	mp_iScore = score;
+}
+/////////////////////////
+//access private members
+////////////////////////
+float Paddle::getPosX()
+{
+	return mp_fPosX;
+}
+float Paddle::getPosY()
+{
+	return mp_fPosY;
+}
+float Paddle::getCenterX()
+{
+	return mp_fCenterX;
+}
+float Paddle::getCenterY()
+{
+	return mp_fCenterY;
+}
+float Paddle::getMinY()
+{
+	return MIN_Y;
+}
+float Paddle::getMaxY()
+{
+	return MAX_Y;
+}
+float Paddle::getTopPaddle()
+{
+	return mp_fTop;
+}
+float Paddle::getBotPaddle()
+{
+	return mp_fBot;
+}
+float Paddle::getRightPaddle()
+{
+	return mp_fRight;
+}
+float Paddle::getLeftPaddle()
+{
+	return mp_fLeft;
+}
+bool Paddle::checkHit()
+{
+	return mp_bHit;
+}
+int Paddle::getScore()
+{
+	return mp_iScore;
+}
+//Update the boundaries
+void Paddle::updatePBound(float xpos, float ypos)
+{
+	mp_fTop = ypos - 16;
+	mp_fBot = ypos + 16;
+	mp_fRight = xpos + 64;
+	mp_fLeft = xpos - 64;
+}
+void Paddle::setPWidth()
+{
+	mp_fWidth = mp_fRight - mp_fLeft;
+}
+void Paddle::setPHeight()
+{
+	mp_fHeight = mp_fBot - mp_fTop;
+}
+float Paddle::getWidth()
+{
+	return mp_fWidth;
+}
+float Paddle::getHeight()
+{
+	return mp_fHeight;
+}

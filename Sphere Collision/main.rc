@@ -1,0 +1,122 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG1 DIALOGEX 0, 0, 526, 348
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "OpenGL Demo"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_PICTURE_OUTPUT,"Static",SS_BLACKFRAME,2,1,522,282
+    SCROLLBAR       IDC_SCROLLBAR_POSX,61,288,142,10
+    LTEXT           "PosX",IDC_STATIC,25,288,29,9,0,WS_EX_RIGHT
+    LTEXT           "PosX",IDC_STATIC_POSX,210,289,21,9
+    SCROLLBAR       IDC_SCROLLBAR_POSY,61,300,142,10
+    LTEXT           "PosY",IDC_STATIC,25,300,29,9,0,WS_EX_RIGHT
+    LTEXT           "PosY",IDC_STATIC_POSY,210,301,21,9
+    SCROLLBAR       IDC_SCROLLBAR_POSZ,61,312,142,10
+    LTEXT           "PosZ",IDC_STATIC,25,311,29,9,0,WS_EX_RIGHT
+    LTEXT           "PosZ",IDC_STATIC_POSZ,210,312,21,9
+    SCROLLBAR       IDC_SCROLLBAR_LOOKX,295,287,142,10
+    LTEXT           "LookX",IDC_STATIC,259,287,29,9,0,WS_EX_RIGHT
+    LTEXT           "LookX",IDC_STATIC_LOOKX,444,289,21,9
+    SCROLLBAR       IDC_SCROLLBAR_LOOKY,295,298,142,10
+    LTEXT           "LookY",IDC_STATIC,254,298,35,9,0,WS_EX_RIGHT
+    LTEXT           "LookY",IDC_STATIC_LOOKY,444,298,21,9
+    SCROLLBAR       IDC_SCROLLBAR_LOOKZ,295,309,142,10
+    LTEXT           "LookZ",IDC_STATIC,259,309,29,9,0,WS_EX_RIGHT
+    LTEXT           "LookZ",IDC_STATIC_LOOKZ,444,311,21,9
+    SCROLLBAR       IDC_SCROLLBAR_FOV,295,332,142,10
+    LTEXT           "FOV",IDC_STATIC,264,332,27,9,0,WS_EX_RIGHT
+    LTEXT           "FOV",IDC_STATIC_FOV,444,333,21,9
+    SCROLLBAR       IDC_SCROLLBAR_ROLL,295,320,142,10
+    LTEXT           "Roll Angle",IDC_STATIC,251,320,37,9,0,WS_EX_RIGHT
+    LTEXT           "Roll",IDC_STATIC_ROLL,444,323,21,9
+    EDITTEXT        IDC_EDIT1,480,312,36,24,ES_AUTOHSCROLL | NOT WS_VISIBLE
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_DIALOG1, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 519
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 341
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

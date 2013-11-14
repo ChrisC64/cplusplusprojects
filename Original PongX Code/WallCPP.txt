@@ -1,0 +1,72 @@
+//Wall Class
+#include "Wall.h"
+
+Wall::Wall()
+{
+	mw_fPosX		= 0.0f;
+	mw_fPosY		= 0.0f;
+	mw_fCenterX		= 0.0f;
+	mw_fCenterY		= 0.0f;
+	mw_bHit			= false;
+}
+Wall::~Wall()
+{
+	mw_fPosX		= NULL;
+	mw_fPosY		= NULL;
+	mw_fCenterX		= NULL;
+	mw_fCenterY		= NULL;
+	mw_bHit			= NULL;
+}
+//////////////////
+// SET METHODS //
+////////////////
+void Wall::setPosX(float x)
+{
+	mw_fPosX = x;
+}
+void Wall::setPosY(float y)
+{
+	mw_fPosY = y;
+}
+void Wall::setCenterX(float cx)
+{
+	mw_fCenterX = cx;
+}
+void Wall::setCenterY(float cy)
+{
+	mw_fCenterY = cy;
+}
+void Wall::setHit()
+{
+	if(mw_bHit == true)
+	{
+		mw_bHit = false;
+	}
+	else
+	{
+		mw_bHit = true;
+	}
+}
+/////////////////
+// GET METHODS //
+/////////////////
+float Wall::getPosX()
+{
+	return mw_fPosX;
+}
+float Wall::getPosY()
+{
+	return mw_fPosY;
+}
+float Wall::getCenterX()
+{
+	return mw_fCenterX;
+}
+float Wall::getCenterY()
+{
+	return mw_fCenterY;
+}
+bool Wall::getHit()
+{
+	return mw_bHit;
+}

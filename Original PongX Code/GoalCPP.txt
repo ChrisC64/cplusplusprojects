@@ -1,0 +1,94 @@
+//Goal Class
+#include "Goal.h"
+
+Goal::Goal()
+{
+	mg_fPosX		= 0.0f;
+	mg_fPosY		= 0.0f;
+	mg_fCenterX		= 0.0f;
+	mg_fCenterY		= 0.0f;
+	mg_fWidth		= 32.0f;
+	mg_fHeight		= 128.0f;
+	mg_bHit			= false;
+}
+Goal::~Goal()
+{
+	mg_fPosX		= NULL;
+	mg_fPosY		= NULL;
+	mg_fCenterX		= NULL;
+	mg_fCenterY		= NULL;
+	mg_fWidth		= NULL;
+	mg_fHeight		= NULL;
+	mg_bHit			= NULL;
+}
+
+////////////////
+// SET METHODS//
+////////////////
+void Goal::setPosX(float x)
+{
+	mg_fPosX = x;
+}
+void Goal::setPosY(float y)
+{
+	mg_fPosY = y;
+}
+void Goal::setCenterX(float cx)
+{
+	mg_fCenterX = cx;
+}
+void Goal::setCenterY(float cy)
+{
+	mg_fCenterY = cy;
+}
+void Goal::setWidth(float w)
+{
+	mg_fWidth = w;
+}
+void Goal::setHeight(float h)
+{
+	mg_fHeight = h;
+}
+void Goal::setHit()
+{
+	//toggle between true and false between each call
+	if(mg_bHit == true)
+	{
+		mg_bHit = false;
+	}
+	else
+	{
+		mg_bHit = true;
+	}
+}
+/////////////////
+// GET METHODS //
+/////////////////
+float Goal::getPosX()
+{
+	return mg_fPosX;
+}
+float Goal::getPosY()
+{
+	return mg_fPosY;
+}
+float Goal::getCenterX()
+{
+	return mg_fCenterX;
+}
+float Goal::getCenterY()
+{
+	return mg_fCenterY;
+}
+float Goal::getHeight()
+{
+	return mg_fHeight;
+}
+float Goal::getWidth()
+{
+	return mg_fWidth;
+}
+bool Goal::getHit()
+{
+	return mg_bHit;
+}

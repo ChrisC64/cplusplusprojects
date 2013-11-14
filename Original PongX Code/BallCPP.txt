@@ -1,0 +1,203 @@
+//Ball Class
+#include "Ball.h"
+
+Ball::Ball() 
+{
+	MAX_BALL_SPEED		= 3.0f;
+	MIN_BALL_SPEED		= 0.5f;
+	mb_fCurrBallSpd		= 0.0f;
+	mb_fPosX			= 0.0f;
+	mb_fPosY			= 0.0f;
+	mb_fCenterX			= 0.0f;
+	mb_fCenterY			= 0.0f;
+	//mb_fHitBox			= 0.0f;
+	mb_bHit				= false;
+	mb_fXVel			= 0.0f;
+	mb_fYVel			= 0.0f;
+	mb_fWidth			= 0;
+	mb_fHeight			= 0;
+	mb_fCurrBallSpd		= 1.0f;
+	//D3DXMatrixIdentity(&ballTransMat);
+}
+Ball::~Ball()
+{
+	MAX_BALL_SPEED		= NULL;
+	MIN_BALL_SPEED		= NULL;
+	mb_fCurrBallSpd		= NULL;
+	mb_fPosX			= NULL;
+	mb_fPosY			= NULL;
+	mb_fCenterX			= NULL;
+	mb_fCenterY			= NULL;
+	//mb_fHitBox			= NULL;
+	mb_bHit				= NULL;
+	mb_fWidth			= NULL;
+	mb_fHeight			= NULL;
+}
+//////////////////////////////
+// Set Members of the Class//
+////////////////////////////
+void Ball::setCenterX(float cX)
+{
+	mb_fCenterX = cX;
+}
+void Ball::setCenterY(float cY)
+{
+	mb_fCenterY = cY;
+}
+void Ball::setPosX(float x)
+{
+	mb_fPosX = x;
+}
+void Ball::setPosY(float y)
+{
+	mb_fPosY = y;
+}
+void Ball::setPos(float x, float y)
+{
+	mb_fPosX = x;
+	mb_fPosY = y;
+}
+/*void Ball::setHitBox(float h)
+{
+	mb_fHitBox = h;
+}*/
+void Ball::setXVel(float vx)
+{
+	mb_fXVel = vx;
+}
+void Ball::setYVel(float vy)
+{
+	mb_fYVel = vy;
+}
+void Ball::setHitBool()
+{
+	if(mb_bHit == true)
+	{
+		mb_bHit = false;
+	}
+	else
+	{
+		mb_bHit = true;
+	}
+}
+void Ball::setWidth()
+{
+	mb_fWidth = mb_fBot - mb_fTop;
+}
+void Ball::setHeight()
+{
+	mb_fHeight = mb_fRight - mb_fLeft;
+}
+void Ball::setBallSpeed(float speed)
+{
+	mb_fCurrBallSpd = speed;
+}
+//////////////////////////////////
+// Get Private Members of Class //
+//////////////////////////////////
+//Get Center Variables
+float Ball::getCenterX()
+{
+	return mb_fCenterX;
+}
+float Ball::getCenterY()
+{
+	return mb_fCenterY;
+}
+//Get Position
+float Ball::getPosX()
+{
+	return mb_fPosX;
+}
+float Ball::getPosY()
+{
+	return mb_fPosY;
+}
+//Get HitBox Information
+/*float Ball::getHitBox()
+{
+	return mb_fHitBox;
+}*/
+float Ball::getXVel()
+{
+	return mb_fXVel;
+}
+float Ball::getYvel()
+{
+	return mb_fYVel;
+}
+//Get Hit Bool Value
+bool Ball::getHitBool()
+{
+	return mb_bHit;
+}
+float Ball::getBotBall()
+{
+	return mb_fBot;
+}
+float Ball::getTopBall()
+{
+	return mb_fTop;
+}
+float Ball::getRightBall()
+{
+	return mb_fRight;
+}
+float Ball::getLeftBall()
+{
+	return mb_fLeft;
+}
+float Ball::getWidth()
+{
+	return mb_fWidth;
+}
+float Ball::getHeight()
+{
+	return mb_fHeight;
+}
+/////////////////////////////
+//Inverse Direction of ball//
+/////////////////////////////
+void Ball::invertDirectionX()
+{
+	//current direction is passed
+	//take current direction, and invert it's direction
+	mb_fXVel = -1 * mb_fXVel;
+}
+void Ball::invertDirectionY()
+{
+	mb_fYVel = -1 * mb_fYVel;
+}
+//////////////////////////////
+// Increment Speed of Ball	//
+//////////////////////////////
+void Ball::incSpeed(float spdUp)
+{
+	if(mb_fCurrBallSpd < MAX_BALL_SPEED)
+	{
+		mb_fCurrBallSpd += spdUp;
+	}
+	else if(mb_fCurrBallSpd >= MAX_BALL_SPEED)
+	{
+		mb_fCurrBallSpd = MAX_BALL_SPEED;
+	}
+}
+/////////////////////////////
+//Update ball's position
+////////////////////////////
+//When the user makes this function call, update ballPos with Vel
+void Ball::updateBallPos(float xVel, float yVel)
+{
+	mb_fPosX += xVel * mb_fCurrBallSpd;
+	mb_fPosY += yVel * mb_fCurrBallSpd;
+}
+/////////////
+// Ball Update
+/////////////
+void Ball::updateBound(float xpos, float ypos)
+{
+	mb_fTop = ypos - 16;
+	mb_fBot = ypos + 16;
+	mb_fRight = xpos + 16;
+	mb_fLeft = xpos - 16;
+}

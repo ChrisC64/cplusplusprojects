@@ -1,0 +1,134 @@
+/////////////////////////////////////
+// Object: Paddle
+// Use: Reflects the ball object, 
+// cannot move beyond the walls set
+// and can only move in Y direction 
+// for current version.
+////////////////////////////////////
+#ifndef PADDLE_H
+#define PADDLE_H
+
+#include <iostream>
+//#include "Gameplay.h"
+using namespace std;
+
+class Paddle
+{
+protected:
+	float mp_fPosX, mp_fPosY;	// X/Y position of ball
+	float MAX_Y, MIN_Y;	// Max position movement/Min Position movement
+	float mp_fCenterX, mp_fCenterY;//Center of object x and y coordinates
+	float mp_fTop, mp_fBot,
+		mp_fRight, mp_fLeft;	//top, left, right, and top of boundaries
+	float mp_fWidth, mp_fHeight;//height and width
+	float mp_fHitBox[4];		// Array that stores hit box [0] == x, [1] == y
+	bool mp_bHit;				// bool to detect hit 
+	int mp_iScore;				//player's score
+public:
+	/////////////////
+	// Constructors//
+	/////////////////
+	Paddle();
+	~Paddle();
+	////////////
+	// Update //
+	////////////
+	//void update(float posX, float posY); //update position of paddle
+	///////////////////////////////
+	// Name: updatePos
+	// Param: float
+	// Return: void
+	// Descrip: This function will
+	// update the position of the 
+	// object. (currently only moves up Y pos)
+	//////////////////////////////
+	void updatePosY(float);
+
+	////////////////////////////////////
+	// Name: setPosY/setPosX
+	// Param: float
+	// Return: Void
+	// Descrip: This will update the
+	// mp_fPosX/mp_fPosY members.
+	///////////////////////////////////
+	void setPosX(float);
+	void setPosY(float);
+	/////////////////////////////////////////
+	// Name: getPosX/getPosY
+	// Param: void
+	// Return: float
+	// Description: Access private members
+	// mp_fPosX and mp_fPosY
+	//////////////////////////////////////
+	float getPosX();
+	float getPosY();
+
+	////////////////////////////////
+	// Name: checkHit
+	// Param: void
+	// Return: Bool
+	// Descript: returns boolean value of 
+	// mp_bCheckHit
+	////////////////////////////////////
+	bool checkHit();
+
+	/////////////////////////////////
+	// Name: setCheckHit
+	// Param: void
+	// Return: void
+	// Descrip: Each time this function
+	// is called, we change the value
+	// of our bool mp_bCheckHit from
+	// true to false or false to true.
+	/////////////////////////////////
+	void setCheckHit();
+
+	//////////////////////////////////
+	// Name: SetCenterX/Y and GetCenterX/Y
+	// Param: set: float get: void
+	// Return: set: void get: float
+	// Descrip: Set functions will set values for our private members 
+	// and the get functions will allow us to access the private members.
+	//////////////////////////////////
+	void setCenterX(float);
+	void setCenterY(float);
+	float getCenterX();
+	float getCenterY();
+	//////////////////////////////////
+	// Name: SetMin/MaxY
+	// Param: float
+	// Return: void
+	// Description: Set the MIN_Y and
+	// MAX_Y variables.
+	//////////////////////////////////
+	void setMinY(float);
+	void setMaxY(float);
+	float getMinY();
+	float getMaxY();
+	///////////////////////////////
+	// Name: updateBound
+	// Param: float xpos, float ypos
+	// Return: void
+	// Description: update the boundary
+	// of the object
+	///////////////////////////
+	void updatePBound(float xpos, float ypos);
+	float getTopPaddle();
+	float getBotPaddle();
+	float getRightPaddle();
+	float getLeftPaddle();
+
+	//set the height and width
+	void setPHeight();
+	void setPWidth();
+	float getHeight();
+	float getWidth();
+	//////////////
+	// Score methods
+	//////////////
+	void setScore(int score);
+	void addScore(int score);
+	int getScore();
+};
+
+#endif PADDLE_H

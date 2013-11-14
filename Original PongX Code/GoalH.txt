@@ -1,0 +1,47 @@
+///////////////////////////////////
+// Class: Goal
+// Description: This class is 
+// our Goal object for the game.
+// We will be making a call to the 
+// gameplay class to add a point every
+// time we have a "Ball" object 
+// in our goal. 
+///////////////////////////////////
+#ifndef GOAL_H
+#define GOAL_H
+#include <iostream>
+#include "Gameplay.h"
+using namespace std;
+
+class Goal
+{
+private:
+	float mg_fPosX, mg_fPosY;
+	float mg_fWidth, mg_fHeight;
+	float mg_fCenterX, mg_fCenterY;
+	bool mg_bHit;
+public:
+	////////////////
+	//Constructors//
+	////////////////
+	Goal();
+	~Goal();
+	//set values of private members
+	void setPosX(float);
+	void setPosY(float);
+	void setCenterX(float);
+	void setCenterY(float); 
+	void setWidth(float);
+	void setHeight(float);
+	void setHit();	// toggle between true and false on each call
+	//get values of private members
+	float getPosX();
+	float getPosY();
+	float getWidth();
+	float getHeight();
+	float getCenterX();
+	float getCenterY();
+	bool getHit();
+};
+
+#endif GOAL_H

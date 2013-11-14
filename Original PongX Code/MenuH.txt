@@ -1,0 +1,81 @@
+////////////////////////////////////////
+// Class: Menu
+// Purpose: This will be the menu class
+// that will allow the user to select 
+// between the various game states that 
+// we will be switching between.
+// Intro, Credits, Game, Quit
+//////////////////////////////////////
+#ifndef MENU_H
+#define MENU_H
+#include <iostream>
+//#include "DirectXFramework.h"
+using namespace std;
+
+class Menu
+{
+protected:
+	int mm_iChoice;//user's choice that will operate how we navigate the menus
+	/*enum GAMESTATE
+	{
+		LOAD,
+		GAME,
+		MENU,
+		CREDITS,
+		QUIT
+	};*/
+public:
+	////////////////
+	//Constructor//
+	///////////////
+	Menu();
+	~Menu();
+	void loadMenu();
+	///////////////////////////
+	// Name: userChoice
+	// Parameters: int
+	// Return: Void
+	// Description: This will change mm_iChoice
+	// to what the users selects. 
+	///////////////////////////
+	void setChoice(int);
+	int getUserChoice();
+	////////////////////////////////////////
+	// Name: LoadGame
+	// Paremters: Void
+	// Return: Void
+	// Description: This is where
+	// we load our game and begin the game.
+	///////////////////////////////////////
+	//void LoadGame();
+
+	////////////////////////////////////
+	// Name: Quit
+	// Parameters: Void
+	// Return: Void
+	// Description: This ends the game
+	///////////////////////////////////
+	void Quit();
+
+	////////////////////////////////////
+	// Name: Credits
+	// Parameters: Void
+	// Return: Void
+	// Description: Display credits of game
+	///////////////////////////////////
+	void Credits();
+
+	////////////////////////////////////
+	// Name: setChoice
+	// Parameters: int
+	// Return: void
+	// Description: Sets the value for
+	// mm_iChoice variable
+	///////////////////////////////////
+	
+	
+
+};
+
+
+#endif MENU_H

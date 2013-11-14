@@ -1,0 +1,173 @@
+/***********************************************
+* Name: Christopher Carlos
+* Date: Nov 2012
+* Project: Pong
+* Information: This DirectXFramework header will
+* be our source code for the operations and functions
+* involving any use of Direct X for the game. 
+*************************************************/
+#pragma once
+#pragma comment(lib, "winmm.lib")
+#pragma comment(lib, "dinput8.lib")
+#pragma comment(lib, "dxguid.lib")
+#pragma comment(lib, "strmiids.lib")
+//////////////////////////////////////////////////////////////////////////
+// Direct3D 9 headers and libraries required
+//////////////////////////////////////////////////////////////////////////
+#include <d3d9.h>
+#include <d3dx9.h>
+#include <dinput.h>
+#include <stdio.h>
+#include <Windows.h>
+#include <fmod.hpp>
+#include <DShow.h>
+#include "Gameplay.h"
+#include <ctime>
+#pragma comment(lib, "d3d9.lib")
+#pragma comment(lib, "d3dx9.lib")
+
+// Macro to release COM objects fast and safely
+#define SAFE_RELEASE(x) if(x){x->Release(); x = 0;}
+
+class DirectXFramework : protected GamePlay
+{
+protected:
+	//////////////////////////////////////////////////////////////////////////
+	// Application Variables
+	//////////////////////////////////////////////////////////////////////////
+	HWND				m_hWnd;			// Handle to the window
+	bool				m_bVsync;		// Boolean for vertical syncing
+	//////////////////////////////////////////////////////////////////////////
+	// Direct3D Variables
+	//////////////////////////////////////////////////////////////////////////
+	IDirect3D9*			m_pD3DObject;	// Direct3D 9 Object
+	IDirect3DDevice9*	m_pD3DDevice;	// Direct3D 9 Device
+	D3DCAPS9			m_D3DCaps;		// Device Capabilities
+	//////////////////////////////////////////////////////////////////////////
+	// Direct Input Variables
+	/////////////////////////////////////////////////////////////////////////
+	IDirectInput8*		m_pDIObject;	// Direct Input Object
+	IDirectInputDevice8* m_pDIKeyboard; // Direct Input Keyboard
+	IDirectInputDevice8* m_pDIMouse;	// Direct Input Mouse
+	DIMOUSESTATE		m_pMouseState;	// Mouse State
+	char				m_pKeyboardState[256];//Buffer for keyboard state
+	bool				m_bKeyDown[256];// Boolean to check if key is down; true = down, false = up
+	//////////////////////////////////////////////////////////////////////////
+	// Font Variables
+	//////////////////////////////////////////////////////////////////////////
+	ID3DXFont*			m_pD3DFont;		// Font Object
+	//////////////////////////////////////////////////////////////////////////
+	// Sprite Variables
+	//////////////////////////////////////////////////////////////////////////
+	ID3DXSprite*		m_pD3DSprite;	// Ball Sprite Object
+
+	/*****************************************************************************/
+	//Textures for Objects in Game
+	IDirect3DTexture9*	m_pBarP1Texture;		// Texture Object for player 1 sprite
+	IDirect3DTexture9*	m_pBarP2Texture;		// Texture Object for player 2 sprite
+	IDirect3DTexture9*	m_pBallTexture;			// Texture Object for the ball
+	IDirect3DTexture9*	m_pBkgdTexture;			// Background Texture Object
+	IDirect3DTexture9*	m_pWallTexture;			//Wall Texture object
+	/****************************************************************************/
+	D3DXIMAGE_INFO		m_imageInfo;	// File details of a texture
+	float posX, posY; //used for updating the position of our object in x and y coordinates (2D game)
+
+	////////////////////////////////////////////////////////////////////////
+	// FMOD Sound Objects
+	////////////////////////////////////////////////////////////////////////
+	FMOD::Sound*		m_pFSound;			// Sound Object
+	FMOD::Sound*		m_pF1Sound;			// Sound Object
+	FMOD::Sound*		m_pFLSound;			// Sound Object
+	FMOD::Sound*		m_pFStream;			// Stream Object
+	FMOD::Channel*		m_pFChannel;		// Channel Object
+	FMOD::Channel*		m_pFLoopChannel;	// Loop Channel
+	FMOD::System*		m_pFSystem;			// System object
+	////////////////////////////////////////////////////////////////////////
+	// Graphic stat variables
+	////////////////////////////////////////////////////////////////////////
+	float mFPS;
+	float mMilliSecPerFrame;
+	////////////////////////////////////////////////////////////////////////
+	//	Direct Show Objects
+	////////////////////////////////////////////////////////////////////////
+	IGraphBuilder*		m_pGraphBuilder;	// Graph builder COM object
+	IMediaControl*		m_pMediaControl;	// Media Control COM Object
+	IMediaEvent*		m_pMediaEvent;		// Media Event COM Object
+	IVideoWindow*		m_pVideoWindow;		// Video Window COM Object
+	bool				m_bVideoOver;		// Stop operations until video has finished playing
+	/////////////////
+	// STATES
+	/////////////////
+	int m_iState;
+	//////////////////
+	//Camera info
+	//////////////////
+	//Eye, Look, and Up Vectors
+	D3DXVECTOR3 eyePos;
+	D3DXVECTOR3 lookAt;
+	D3DXVECTOR3 upVec;
+	//View and Projection matrix
+	D3DXMATRIX  viewMat;
+	D3DXMATRIX	projMat;
+public:
+	//////////////////
+	// Constructors
+	/////////////////
+	DirectXFramework();
+	~DirectXFramework();
+
+	/**********************************************************
+	* Function: Init()
+	* Param.: HWND hWnd - Handle to the window application
+	*		  HINSTANCE hInst - Handle to the application instance
+	*		  bool Windowed - boolean for window or fullscreen
+	* Return: void
+	* Description: This will be our initializer for the Direct X 
+	* components. We run this function once to initialize all components.
+	***************************************************************/
+	void Init(HWND& hWnd, HINSTANCE& hInst, bool bWindowed);
+
+	/****************************************************************
+	* Function: Update(float)
+	* Param.: Float dt - Delta time float
+	* Return: Void
+	* Description: This is our update function that we call every frame
+	* to enable the update of position of objects on the screen, drawing, and
+	* variables, and processing input commands. 
+	*******************************************************************/
+	void Update(float dt, int state);
+
+	/******************************************************************
+	* Function: Render()
+	* Param: void
+	* Return: void 
+	* Description: This runs at every frame to draw our scene. 
+	*******************************************************************/
+	void Render();
+	//void RenderIntro();
+	//void RenderGame(); //Render and play game
+	//void RenderMenu(); // Render Menu
+	//void RenderCredits();// Render Credits
+	/******************************************************************
+	* Function: Shutdown();
+	* Param: Void
+	* Return: Void
+	* Description: Releases our COM objects and deallocate memory
+	* when we quit the game. 
+	******************************************************************/
+	void Shutdown();
+
+	//////////////
+	// Access 
+	//////////////
+	int getState();
+	void setState(int state);
+	//////////////////
+	// Object Class //
+	//////////////////
+	Paddle paddleObjA; //player 1
+	Paddle paddleObjB; //player 2
+	Ball*	ballObj;
+	Wall*	wallObj;
+	GamePlay* gameObj;
+};
